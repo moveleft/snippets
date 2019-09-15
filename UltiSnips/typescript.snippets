@@ -1,30 +1,34 @@
 snippet ng-component
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-    @Component({
-        selector: 'mon-`!p snip.rv = snip.basename.replace('.component.ts', '')`',
-		changeDetection: ChangeDetectionStrategy.OnPush,
-        templateUrl: '$2.component.html'
-        styleUrls: ['$2.component.html']
-    })
-    export class ${1:#:ComponentName}Component implements OnInit {
-        constructor() { }
+@Component({
+    selector: 'mon-`!p snip.rv = snip.basename.replace('.component', '')`',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: '`!p snip.rv = snip.basename.replace('.component', '')`.component.html'
+    styleUrls: ['`!p snip.rv = snip.basename.replace('.component', '')`.component.html']
+})
+export class ${1:#:ComponentName}Component implements OnInit {
+    constructor() { }
+}
 endsnippet
 
-snippet ng-containers
-import { Component, OnInit } from '@angular/core';
+snippet ng-container
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromStore from '../../store';
 
-    @Component({
-        moduleId: module.id,
-        selector: '$1',
-        templateUrl: '${2:#:name}.component.html'
-    })
-    export class ${1:#:ComponentName}Component implements OnInit {
-        constructor() { }
+@Component({
+    selector: 'mon-`!p snip.rv = snip.basename.replace('.component', '')`',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: '`!p snip.rv = snip.basename.replace('.component', '')`.component.html'
+    styleUrls: ['`!p snip.rv = snip.basename.replace('.component', '')`.component.html']
+})
+export class ${1:#:ComponentName}Component implements OnInit {
+    constructor(private store$: Store<fromStore.${2:#:State}>) { }
 
-        ngOnInit() { }
-        ${0}
-    }
+    ngOnInit() { }
+    ${0}
+}
 endsnippet
 
 snippet ng-service
